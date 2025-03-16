@@ -1,0 +1,101 @@
+CategoryFilter kocur page components
+
+
+home.page - seher , axsam , gunorta cartlar --  bunlar üçün components olacaq və data
+
+
+səgər.page --  category  --- categoryCart --- data
+
+
+
+global cart olmalıdı bütün menu cesidlerinde istifade etmek üçün 
+
+
+
+Datalar ne olacaq 
+
+seher yemeyi 
+category datasi 
+productlar datasi 
+
+axsam yemeyi
+category datasi 
+productlar datasi 
+
+banket 
+category datasi 
+product datasi 
+
+               
+
+Menu:
+  - name: Səhər Yeməyi
+    category:
+      - name: Yumurtalar və Omletlər
+      - name: Qayğanaq və Sendviçlər
+      - name: Süd və Taxıllar
+    products:
+      - id: 1
+        name: Pendirli Omlet
+        price: 5.00
+      - id: 2
+        name: Bal və Kərə Yağı ilə Pancake
+        price: 6.50
+      - id: 3
+        name: Səhər Sendviçi
+        price: 4.00
+
+  - name: Axşam Yeməyi
+    category:
+      - name: Ət Yeməkləri
+      - name: Balıq və Dəniz Məhsulları
+      - name: Vejetaryan Yeməklər
+    products:
+      - id: 4
+        name: Toyuq Qızartması
+        price: 10.00
+      - id: 5
+        name: Limonlu Somon Balığı
+        price: 12.50
+      - id: 6
+        name: Göbələkli Risotto
+        price: 9.00
+
+  - name: Banket
+    category:
+      - name: Soyuq Yeməklər
+      - name: İsti Yeməklər
+      - name: Şirniyyatlar
+    products:
+      - id: 7
+        name: Qızardılmış Ördək
+        price: 25.00
+      - id: 8
+        name: Zeytun və Pendir Qarışığı
+        price: 8.00
+      - id: 9
+        name: Şokoladlı Tort
+        price: 6.00
+
+
+
+/restaurant-menu
+│── /data
+│   │── breakfast.js       # Səhər yeməyi üçün data (category, products)
+│   │── dinner.js          # Axşam yeməyi üçün data (category, products)
+│   │── banquet.js         # Banket menyusu üçün data
+│   │── categories.js      # Bütün kateqoriyalar ümumi olaraq burada saxlanıla bilər
+│── /components
+│   │── MenuList.jsx       # Menyu siyahısını göstərən komponent
+│   │── ProductCard.jsx    # Məhsulu göstərən komponent
+│── /pages
+│   │── index.jsx          # Əsas menyu səhifəsi
+│   │── breakfast.jsx      # Səhər yeməyi səhifəsi
+│   │── dinner.jsx         # Axşam yeməyi səhifəsi
+│   │── banquet.jsx        # Banket menyusu səhifəsi
+│── /styles
+│   │── menu.scss          # Menyu səhifəsi üçün stil
+│── app.js                 # Əsas tətbiq faylı
+│── routes.js              # Routing üçün konfiqurasiya
+│── package.json           # Layihə bağımlılıqları
+
