@@ -1,5 +1,8 @@
 'use client'
 import React, { useState } from 'react';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from '../firebaseConfig';
 import { useRouter } from 'next/navigation';
 
 const Login = () => {
@@ -12,11 +15,20 @@ const Login = () => {
     e.preventDefault();
     setError(null);
     try {
-      // Burada Firebase giriş funksiyasını əlavə edə bilərsən
-      console.log('User logged in');
-      // Giriş uğurlu olarsa yönləndirmə əlavə et
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Firestore-dan istifadəçinin rolunu yoxla
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      const userData = userDoc.data();
+
+      if (userData?.role === "admin") {
+        router.push('/admin/dashboard'); // Admin olduğunda dashboard səhifəsinə yönləndir
+      } else {
+        router.push('/admin/dashboard'); // Əks halda əsas səhifəyə yönləndir
+      }
     } catch (err) {
-      setError(err.message);
+      setError("Yanlış email və ya parol!");
     }
   };
 
